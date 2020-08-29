@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Audio Tracks List Tutorial</title>
+<style>
+.trackbox{ background:#DDD; border: 1px solid gray; display:inline-block; padding:2px; height:30px; width: 135px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+.trackbox:nth-child(even) { background:#EEE; }
+.playbutton{ opacity:.8; display: inline-block; float:left; width:30px; height:30px; margin:0px -2px -2px 6px; background:url(images/ak_playbtn.png) no-repeat; border:none; cursor:pointer; outline:none; }
+.playbutton:hover{ opacity:1; }
+.trackname{ float:left; color:#000; margin:2px -2px 0px 0px; font-size:12px; font-weight:bold; }
+.trackbox {
+	background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 1px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 1px 2px;
+    border-radius: 2em;
+    font-family: "Segoe UI",Arial,sans-serif;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f4511e;
+}
+.trackbox:hover {
+	background-color: #f4511e;
+    color: white;
+}
+#trackbox {
+	width: 95%;
+    border: 2px solid #000;
+    border-radius: 1.5em;
+    margin-top: 2%;
+    margin-left: 4%;
+    padding: 20px 10px;
+}
+#sidebar ul {
+	display: inline-grid;
+}
+#sidebar ul li {
+	height: 40px;
+}
+#navbar ul {
+	display: inline-flex;
+	list-style-type: none;
+	font-size: 18px;
+}
+li {
+	padding: 1px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    font-weight: bold;
+    margin: 1px 2px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    color: #000;
+    cursor: pointer; 
+    border: 2px solid #7c82a2;
+  	background-color: #80c7ff;
+  	box-shadow: 0px 1px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+li:hover {
+	background-color: #0652dd;
+	color: #fff;
+}
+
+#bodycontent {
+ 	width:  100%;
+    display:  inline-flex;
+    margin-top: -2%;
+ }
+ #sidebar {
+ 	width: 20%;
+ }
+
+
+</style>
+<script>	
+function _(id){
+	return document.getElementById(id);
+}
+function audioApp(){
+	var audio = new Audio();
+	var audio_folder = "track/tracks/";
+	var audio_ext = ".mp3";
+	var audio_index = 1;
+	var is_playing = false;
+	var playingtrack;
+	var trackbox = _("trackbox");
+	var tracks = {
+	    "track1":["Greetings", "Greetings"],
+		"track2":["Pitch", "Pitch"],
+		"track3":["Do you own or rent", "Do you own or rent"],
+		"track4":["Single Family Detatch", "Single Family Detatch"],
+		"track5":["So r u the homeowner", "So r u the homeowner"],
+		"track6":["S Family StandAlone", "S Family StandAlone"],
+		"track7":["Name is Jason", "Name is Jason"],
+		"track8":["LikeRecieve freeinfo", "LikeRecieve freeinfo"],
+		"track9":["Nocost noobligation", "Nocost noobligation"],
+		"track10":["Talking to solar", "Talking to solar"],
+		"track11":["Breathe", "breathe3"],
+		"track12":["Calling from WPBF", "Calling from WPBF"],
+		"track13":["Decision maker", "Decision maker"],
+		"track14":["Eleminate solar bill", "Eleminate solar bill"],
+		"track15":["Breathe", "breathe4"],
+		"track16":["Stranglehold", "stranglehold5"],
+		"track17":["Fast Lane", "fast_lane5"],
+		"track18":["Breathe", "breathe5"],
+		"track19":["Stranglehold", "stranglehold6"],
+		"track20":["Fast Lane", "fast_lane6"],
+		"track21":["Breathe", "breathe6"],
+		"track22":["Stranglehold", "stranglehold7"],
+		"track23":["Fast Lane", "fast_lane7"],
+		"track24":["Breathe", "breathe7"],
+		"track25":["Stranglehold", "stranglehold8"],
+		"track26":["Stranglehold", "stranglehold9"],
+		"track27":["Fast Lane", "fast_lane8"],
+		"track28":["Breathe", "breathe8"],
+		"track29":["Stranglehold", "stranglehold10"],
+		"track30":["Fast Lane", "fast_lane9"],
+		"track31":["Breathe", "breathe9"],
+		"track32":["Stranglehold", "stranglehold11"],
+		"track33":["Fast Lane", "fast_lane10"],
+		"track34":["Breathe", "breathe10"],
+		"track35":["Stranglehold", "stranglehold12"],
+		"track36":["Fast Lane", "fast_lane11"],
+		"track37":["Breathe", "breathe11"],
+		"track38":["Stranglehold", "stranglehold13"],
+		"track39":["Stranglehold", "stranglehold14"],
+		"track40":["Stranglehold", "stranglehold14"],
+		"track41":["Stranglehold", "stranglehold14"],
+		"track42":["Stranglehold", "stranglehold14"],
+		"track43":["Stranglehold", "stranglehold14"],
+		"track44":["Stranglehold", "stranglehold14"],
+		"track45":["Stranglehold", "stranglehold14"],
+		"track46":["Stranglehold", "stranglehold14"]
+	};
+
+	for(var track in tracks){
+		var tb = document.createElement("div");
+		var pb = document.createElement("button");
+		var tn = document.createElement("div");
+		tb.className = "trackbox";
+		pb.className = "playbutton";
+		tn.className = "trackname";
+		tn.innerHTML = audio_index+". "+tracks[track][0];
+		tb.id = tracks[track][1];
+		tb.addEventListener("click", switchTrack);
+		tb.appendChild(pb);
+		tb.appendChild(tn);
+		trackbox.appendChild(tb);
+		audio_index++;
+	}
+
+	audio.addEventListener("ended", function(){
+	    document.getElementById(playingtrack).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+		playingtrack = "";
+		is_playing = false;
+	});
+	function switchTrack(event){
+		debugger
+		var counter = 0;
+		if(is_playing){
+		    if(playingtrack != this.id){
+			    is_playing = true;
+			    document.getElementById(playingtrack).removeAttribute("style");
+				document.getElementById(playingtrack).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+			    document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_pausebtn.png)";
+			    audio.src = audio_folder+this.id+audio_ext;
+			    audio.play();
+
+			    //Styling Here
+			    //for(var t in tracks){
+			    //	document.getElementById(t).removeAttribute("style");
+				//	if(t == document.getElementById(event.target.id).parentNode.id) {
+						document.getElementById(this.id).style.backgroundColor = "green";
+				//	}
+				//}
+			} else {
+				audio.pause();
+				audio.currentTime = 0;
+			    is_playing = false;
+				document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+
+				//Styling Here
+				//for(var t in tracks){
+				//	if(t == document.getElementById(event.target.id).parentNode.id) {
+						document.getElementById(this.id).removeAttribute("style");
+				//	}
+				//}
+			}
+		} else {
+			is_playing = true;
+			document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_pausebtn.png)";
+			if(playingtrack != this.id){
+				audio.src = audio_folder+this.id+audio_ext;
+			
+			}
+	        audio.play();
+
+	        //Styling Here
+	        //for(var t in tracks){
+	        //	document.getElementById(t).removeAttribute("style");
+			//	if(t == document.getElementById(event.target.id).parentNode.id) {
+					document.getElementById(this.id).style.backgroundColor = "green";
+			//	}
+
+			//}
+		}
+		playingtrack = this.id;
+	}
+}
+window.addEventListener("load", audioApp);
+</script>
+</head>
+<body>
+		<h2 align = center> <b><u> Home Improvement</u></b></h2>
+	<div id="trackbox" width="80%"></div>
+	</div>
+  </body>
+</html>

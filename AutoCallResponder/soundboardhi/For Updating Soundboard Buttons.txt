@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Audio Tracks List Tutorial</title>
+<style>
+.trackbox{ background:#DDD; border: 1px solid gray; display:inline-block; padding:2px; height:29px; width: 143px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+.trackbox:nth-child(even) { background:#EEE; }
+.playbutton{ opacity:.8; display: inline-block; float:left; width:26px; height:26px; margin:-1px -2px -2px 6px; background:url(images/ak_playbtn.png) no-repeat; border:none; cursor:pointer; outline:none; }
+.playbutton:hover{ opacity:1; }
+.trackname{ float:left; color:#000; margin:2px -2px 0px 0px; font-size:12px; font-weight:bold; }
+.trackbox {
+	background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 1px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 1px 1px;
+    border-radius: 2em;
+    font-family: "Segoe UI",Arial,sans-serif;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f4511e;
+}
+.trackbox:hover {
+	background-color: #f4511e;
+    color: white;
+}
+#trackbox {
+	width: 90%;
+    border: 2px solid #000;
+    border-radius: 1.5em;
+    margin-top: 1%;
+    margin-left: 2%;
+    padding: 08px 10px;
+}
+#sidebar ul {
+	display: inline-grid;
+}
+#sidebar ul li {
+	height: 40px;
+}
+#navbar ul {
+	display: inline-flex;
+	list-style-type: none;
+	font-size: 18px;
+}
+li {
+	padding: 1px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    font-weight: bold;
+    margin: 1px 2px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    color: #000;
+    cursor: pointer; 
+    border: 2px solid #7c82a2;
+  	background-color: #80c7ff;
+  	box-shadow: 0px 1px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+li:hover {
+	background-color: #0652dd;
+	color: #fff;
+}
+
+#bodycontent {
+ 	width:  100%;
+    display:  inline-flex;
+    margin-top: -2%;
+ }
+ #sidebar {
+ 	width: 20%;
+ }
+
+
+</style>
+<script>	
+function _(id){
+	return document.getElementById(id);
+}
+function audioApp(){
+	var audio = new Audio();
+	var audio_folder = "tracks/tracks/";
+	var audio_ext = ".mp3";
+	var audio_index = 1;
+	var is_playing = false;
+	var playingtrack;
+	var trackbox = _("trackbox");
+	var tracks = {
+	    "track1":["Hello", "Hello"],
+		"track3":["Fantastic", "Fantastic"],
+		"track2":["R U There", "Are You There"],
+		"track4":["Can You Hear", "Can You Hear Me"],
+        
+		"track5":["Greetings", "Greetings"],
+		"track7":["Thanks 4 asking ", "Oh! I am Great Thanks for asking"],
+		"track6":["Speak to her", "Talk to her"],
+		"track11":["Speak to him", "Talk to him"],
+		"track9":["Purpose/Great", "Pitch 1"],
+		"track8":["Not Interested", "Not Interested"],
+		"track15":["Decision Maker", "Decision Maker"],
+		"track12":["My Name Is", "My Name Is Greg"],
+        
+		"track10":["Purpose", "Pitch"],
+		"track13":["Calling From", "Company Located"],
+		"track14":["Busy", "Busy"],
+		"track16":["own or renting", "own or renting house"],
+		"track19":["Pitch 1", "Pitch -1"],
+		"track17":["Calling With", "Company Name"],
+		"track20":["Yes", "Yes"],
+		"track21":["Glad to hear", "Glad to hear that"],
+		"track18":["project", "Projects"],
+		"track22":["I am Sorry Say", "I am Sorry Say That again"],
+		"track24":["Already Have", "Are you already talking to another solar company"],
+		"track25":["Compny Locatd", "Company Located"],
+		"track23":["Homeower?", "Are you homeowner"],
+		"track27":["Hold on Just a", "Hold on Just a Moment"],
+		"track28":["Company Name", "Company Name"],
+		"track29":["Okay Light", "Okay Light"],
+		"track32":["Xfer Pitch", "Xfer Pitch"],
+		"track30":["No", "No"],
+		"track31":["Sure", "Sure"],
+		"track33":["Don't Need", "Don't Need"],
+		"track26":["Transfer", "Transfer"],
+		"track34":["Free Info", "Free Info"],
+		"track35":["Oh I am Sorry", "Oh I am Sorry"],
+		"track36":["DNC Pitch", "DNC Pitch"],
+		"track40":["Thanks anyway", "Thanks anyway"],
+		"track37":["Great question", "It's a great question"],
+		"track38":["Real Person", "Real Person"],
+		"track39":["Thankyou", "Thankyou"],
+		"track42":["I'll be really", "I'll be really quick"],
+		"track43":["Let me ask", "Let me ask"],
+		"track44":["Good", "Good"],
+		"track45":["Ok I Understand", "Ok I Understand"],
+		"track46":["Just 1 More Sec", "Just One More Second"],
+		"track47":["Callback", "Callback"],
+		"track48":["hmm Okay", "hmm Okay"],
+		"track49":["Do.....", "Don"],
+		"track50":["13454", "4544"],
+		"track51":["So.....", "So"],
+		"track52":["Okay (Light)", "Okay Light"]
+	};
+
+	for(var track in tracks){
+		var tb = document.createElement("div");
+		var pb = document.createElement("button");
+		var tn = document.createElement("div");
+		tb.className = "trackbox";
+		pb.className = "playbutton";
+		tn.className = "trackname";
+		tn.innerHTML = audio_index+". "+tracks[track][0];
+		tb.id = tracks[track][1];
+		tb.addEventListener("click", switchTrack);
+		tb.appendChild(pb);
+		tb.appendChild(tn);
+		trackbox.appendChild(tb);
+		audio_index++;
+	}
+
+	audio.addEventListener("ended", function(){
+	    document.getElementById(playingtrack).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+		playingtrack = "";
+		is_playing = false;
+	});
+	function switchTrack(event){
+		debugger
+		var counter = 0;
+		if(is_playing){
+		    if(playingtrack != this.id){
+			    is_playing = true;
+			    document.getElementById(playingtrack).removeAttribute("style");
+				document.getElementById(playingtrack).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+			    document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_pausebtn.png)";
+			    audio.src = audio_folder+this.id+audio_ext;
+			    audio.play();
+
+			    //Styling Here
+			    //for(var t in tracks){
+			    //	document.getElementById(t).removeAttribute("style");
+				//	if(t == document.getElementById(event.target.id).parentNode.id) {
+						document.getElementById(this.id).style.backgroundColor = "green";
+				//	}
+				//}
+			} else {
+				audio.pause();
+				audio.currentTime = 0;
+			    is_playing = false;
+				document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_playbtn.png)";
+
+				//Styling Here
+				//for(var t in tracks){
+				//	if(t == document.getElementById(event.target.id).parentNode.id) {
+						document.getElementById(this.id).removeAttribute("style");
+				//	}
+				//}
+			}
+		} else {
+			is_playing = true;
+			document.getElementById(this.id).childNodes[0].style.background = "url(images/ak_pausebtn.png)";
+			if(playingtrack != this.id){
+				audio.src = audio_folder+this.id+audio_ext;
+			
+			}
+	        audio.play();
+
+	        //Styling Here
+	        //for(var t in tracks){
+	        //	document.getElementById(t).removeAttribute("style");
+			//	if(t == document.getElementById(event.target.id).parentNode.id) {
+					document.getElementById(this.id).style.backgroundColor = "green";
+			//	}
+
+			//}
+		}
+		playingtrack = this.id;
+	}
+}
+window.addEventListener("load", audioApp);
+</script>
+</head>
+<body>
+		<a href="../soundboardhi/soundboardhi.html"><img src="images/hi2.jpg"height="50" width="50"> 
+		<iframe align = right src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FKarachi" width="50%" height="85" frameborder="0" seamless></iframe><br>
+		 <br></a><a href="../soundboardhi/soundboardhi.html"><h2 align = center ><font color="forestgreen"><b>Compaign: Home Improvement</b></font></h2></a>
+	<div id="trackbox" width="80%"></div>
+	</div>
+  </body>
+<footer>
+<div align = center><font color="forestgreen">
+<a style="text-decoration: none" class="clock24" id="tz24-1543097930-tzest-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMCIsInNob3d0aW1lem9uZSI6IjEiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9" title="EST Time" target="_blank" rel="nofollow"><b><font color="black">Eastern Time Zone</font></b></a>
+<script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+<a style="text-decoration: none" class="clock24" id="tz24-1543098307-tzpst-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMCIsInNob3d0aW1lem9uZSI6IjEiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9" title="time at PST" target="_blank" rel="nofollow"><b><font color="black">Pacific Time Zone</font></b </a>
+<script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+<a style="text-decoration: none" class="clock24" id="tz24-1543098546-tzcst-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMCIsInNob3d0aW1lem9uZSI6IjEiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9" title="CST timezone" target="_blank" rel="nofollow"><b><font color="black">Central Time Zone</font></b> </a>
+<script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+<br /><a style="text-decoration: none" class="clock24" id="tz24-1543099105-tzmst-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMCIsInNob3d0aW1lem9uZSI6IjEiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9" title="MST local time" target="_blank" rel="nofollow"><b><font color="black">Mountain Time Zone</font></b></a>
+<script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+</div>
+
+<h4 align = center>
+<font color="red">&copy;</font><font color="black">Copywrite AB TeleMarketing Pvt Limited.</font>
+</h4>
+</footer>
+</html>
