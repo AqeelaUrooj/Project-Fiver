@@ -57,7 +57,8 @@
 			</h4>
 		</footer>
 	</div>
-	<script src="call2.js"></script>
+	<script src="Newcall\js\jquery.js" ></script>
+	<script src="Newcall/call2.js"></script>
 	<script src="indexjs.js"></script>
 
 		</div>

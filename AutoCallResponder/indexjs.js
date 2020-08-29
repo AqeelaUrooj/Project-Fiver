@@ -1,10 +1,12 @@
 ﻿//soundboard start
 function _(id){
+  
 return document.getElementById(id);
 }
 function audioApp(){
 var audio = new Audio();
 var audio_folder = "soundboardhi/tracks/tracks/";
+var audio_abc = "soundboardhi/tracks/ABC-Alphabets/";
 var audio_ext = ".mp3";
 var audio_index = 1;
 var is_playing = false;
@@ -85,7 +87,7 @@ var tracks = {
 
 "track38":["Real Person", "I am a real person"],
 
-"track53":["Example", "Example Date Spoken Format"],
+"track53":["Spell First name", "spell_f"],
 
 
 "track43":["--------", "Let me ask"],
@@ -100,6 +102,7 @@ var tracks = {
 
 
 };
+
 
 for(var track in tracks){
 var tb = document.createElement("div");
@@ -142,9 +145,24 @@ is_playing = true;
 document.getElementById(playingtrack).removeAttribute("style");
 document.getElementById(playingtrack).childNodes[0].style.background = "url(soundboardhi/images/ak_playbtn.png)";
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
+
+
+
+if( this.id=="spell_f")
+{
+
+for(var i=0;i<res.length; i++)
+{
+ // console.log(audio_abc+res[i]+audio_ext);
+  audio.src = audio_abc+res[i]+audio_ext;
+  audio.play(); 
+}
+
+}
+else{
 audio.src = audio_folder+this.id+audio_ext;
 audio.play(); 
-
+}
 //Styling Here
 //for(var t in tracks){
 // document.getElementById(t).removeAttribute("style");
@@ -165,12 +183,29 @@ document.getElementById(this.id).removeAttribute("style");
 // }
 //}
 }
-} else {
+} 
+
+else {
 is_playing = true;
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
 if(playingtrack != this.id){
-audio.src = audio_folder+this.id+audio_ext;
 
+  if( this.id=="spell_f")
+{
+var res= ["H", "O", "W", "A", "R", "D"];
+var i=0
+while(i<res.length)
+{
+  console.log(audio_abc+res[i]+audio_ext);
+  audio.src = audio_abc+res[i]+audio_ext;
+  audio.play(); 
+  audio.pause();
+  i++;
+}}
+else
+{
+audio.src = audio_folder+this.id+audio_ext;
+}
 }
 audio.play();
 
@@ -343,7 +378,53 @@ for(var ijk=0;ijk<res.length;ijk++){
   select_dialect.remove(i);
   }
   var list = langs[select_language.selectedIndex];
-  for (var i = 1; i < list.length; i++) { select_dialect.options.add(new Option(list[i][1], list[i][0])); } select_dialect.style.visibility=list[1].length==1 ? 'hidden' : 'visible' ; } var create_email=false; var final_transcript='' ; var recognizing=false; var ignore_onend; var start_timestamp; if (!('webkitSpeechRecognition' in window)) { upgrade(); } else { start_button.style.display='inline-block' ; var recognition=new webkitSpeechRecognition(); recognition.continuous=true; recognition.interimResults=true; recognition.onstart=function () { recognizing=true; showInfo('info_speak_now'); start_img.src='mic-animate.gif' ; }; recognition.onerror=function (event) { console.log("error"); startButton(event); if (event.error=='no-speech' ) { start_img.src='mic.gif' ; showInfo('info_no_speech'); ignore_onend=true; } if (event.error=='network' ) { document.getElementById("info").innerHTML="Network Error" ; start_img.src='mic.gif' ; showInfo('info_no_speech'); ignore_onend=true; } if (event.error=='audio-capture' ) { start_img.src='mic.gif' ; showInfo('info_no_microphone'); ignore_onend=true; } if (event.error=='not-allowed' ) { if (event.timeStamp - start_timestamp < 100) { showInfo('info_blocked'); } else { showInfo('info_denied'); } ignore_onend=true; } startButton(event); }; recognition.onend=function () { console.log("vr.onend"); recognizing=false; if (ignore_onend) { startButton(event); console.log('restarted'); return; } start_img.src='mic.gif' ; if (!final_transcript) { showInfo('info_start'); return; } showInfo(''); startButton(event); console.log('restarted'); if (window.getSelection) { window.getSelection().removeAllRanges(); var range=document.createRange(); range.selectNode(document.getElementById('final_span')); window.getSelection().addRange(range); } if (create_email) { create_email=false; createEmail(); } }; const sleep=(milliseconds)=> {
+  for (var i = 1; i < list.length; i++) {
+     select_dialect.options.add(new Option(list[i][1], list[i][0]));
+     } select_dialect.style.visibility=list[1].length==1 ? 'hidden' : 'visible' ; 
+    } var create_email=false; 
+    var final_transcript='' ; 
+    var recognizing=false;
+     var ignore_onend; 
+     var start_timestamp;
+      if (!('webkitSpeechRecognition' in window)) 
+      { upgrade(); } 
+      else {
+         start_button.style.display='inline-block' ;
+          var recognition=new webkitSpeechRecognition();
+           recognition.continuous=true; 
+           recognition.interimResults=true;
+            recognition.onstart=function () {
+               recognizing=true; showInfo('info_speak_now');
+                start_img.src='mic-animate.gif' ; };
+                 recognition.onerror=function (event) 
+                 { console.log("error"); startButton(event);
+                  if (event.error=='no-speech' )
+                   { start_img.src='mic.gif' ; 
+                   showInfo('info_no_speech'); 
+                   ignore_onend=true; }
+                    if (event.error=='network' )
+                     { document.getElementById("info").innerHTML="Network Error" ; 
+                     start_img.src='mic.gif' ; 
+                     showInfo('info_no_speech'); ignore_onend=true;
+                     } if (event.error=='audio-capture' ) 
+                     { start_img.src='mic.gif' ;
+                      showInfo('info_no_microphone');
+                      ignore_onend=true; } if (event.error=='not-allowed' )
+                       { if (event.timeStamp - start_timestamp < 100)
+                         { showInfo('info_blocked'); } else { showInfo('info_denied'); } 
+                         ignore_onend=true; } startButton(event); };
+                          recognition.onend=function ()
+                           { console.log("vr.onend"); recognizing=false;
+                            if (ignore_onend) { startButton(event); console.log('restarted');
+                             return; } start_img.src='mic.gif' ; 
+                             if (!final_transcript)
+                              { showInfo('info_start'); return; } showInfo(''); startButton(event); 
+                              console.log('restarted'); if (window.getSelection)
+                               { window.getSelection().removeAllRanges(); var range=document.createRange();
+                                 range.selectNode(document.getElementById('final_span'));
+                                  window.getSelection().addRange(range); }
+                                   if (create_email) { create_email=false; createEmail(); } };
+                                    const sleep=(milliseconds)=> {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
     async function sendmsg(inte){
