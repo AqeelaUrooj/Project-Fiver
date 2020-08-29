@@ -12,6 +12,9 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="0">
+	<meta http-equiv='cache-control' content='no-cache'> 
+	<meta http-equiv='expires' content='0'> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,14 +60,33 @@
 			</h4>
 		</footer>
 	</div>
-	<script src="Newcall\js\jquery.js" ></script>
-	<script src="Newcall/call2.js"></script>
-<script>
+	<?php
+		echo $_POST['file'];
+		?>
 
-var file=<?php session_start(); echo json_encode($_SESSION['file']); ?>;
 
+	<script>
+
+//var file= <?php //session_start(); echo json_encode($_SESSION['file']); ?> ;
+
+// if(document.getElementById('vicidial_iframe').contentWindow) {
+//  ifdoc = document.getElementById('vicidial_iframe').contentWindow.document;
+// } else {
+//  ifdoc = document.getElementById('vicidial_iframe').contentDocument;
+// }
+
+// var name= $('#fname').val();
+name=document.getElementById('vicidial_iframe');
+ 
+  name=window.frames['vicidial_iframe'].document.getElementId('fname').value;
+ 
+
+console.log(name);
 </script>
+	<script src="Newcall\js\jquery.js" ></script>
 	<script src="indexjs.js"></script>
+
+	
 
 		</div>
 		<?php
@@ -98,6 +120,7 @@ if ($result->num_rows > 0) {
     echo "parent_of.push('$parent_of'); node_id.push('$node_id');btn3.push('$btn3');timeout_time.push('$timeout_time');timeout_btn.push('$timeout_btn');txt.push('$txt');btn1.push('$btn1');btn2.push('$btn2');\n";
   }
 }
+
 		 ?>
 		 
 		</div>

@@ -21,6 +21,8 @@ $mp3->striptags();
  }
 $name="merge".rand();
 $mp3->savefile('..\soundboardhi\tracks\ABC-Alphabets\\'.$name.'.mp3'); //Output file (current a blank file)
+//$mp3->savefile('..\soundboardhi\tracks\ABC-Alphabets\merge.mp3'); //Output file (current a blank file)
+
 $_SESSION['file']=$name;
 
 }

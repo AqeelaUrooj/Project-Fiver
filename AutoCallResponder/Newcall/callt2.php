@@ -22,6 +22,8 @@
 <?php
 
   include('get_det.php');  
+ 
+
 
  ?>
 
@@ -64,7 +66,7 @@
             <div class="col">
                 
             
-            <input type="button" id='AddButton' class="btn btn-success" value="Load Data" />           
+           <input type="button" id='AddButton' class="btn btn-success" value="Load Data" />         
              Remaining Data :
                   <input id="remaining" value="<?php echo count($send)-$i-1; ?>">
                 
@@ -288,7 +290,7 @@
  $(document).ready(function(){
  $('#AddButton').click( function() {
      
-     counter=<?php  echo json_encode($_SESSION['id']);   ?>
+     counter=<?php  echo json_encode($_SESSION['id']);   ?>;
 
          // $('#TextBox').val(counter++);
          
@@ -297,6 +299,17 @@
          
         
  });
+var name=<?php echo json_encode($_SESSION['file']); ?>;
+    $.ajax({
+        url: '../index.php',
+        type: 'POST',
+        data: {
+            file: name,
+        },
+        success: function(msg) {
+            alert('Email Sent');
+        }               
+    });
 
  });
 </script>

@@ -106,8 +106,16 @@ var tracks = {
 
 for(var track in tracks){
 var tb = document.createElement("div");
-var pb = document.createElement("button");
 var tn = document.createElement("div");
+if(tracks[track][1]=="spell_f")
+{
+  var pb = document.createElement("button");
+  pb.id="spellf";
+}
+else
+{
+  var pb = document.createElement("button");
+}
 tb.className = "trackbox ";
 tb.setAttribute("index",audio_index-1);
 pb.className = "playbutton";
@@ -119,6 +127,7 @@ tb.appendChild(pb);
 tb.appendChild(tn);
 trackbox.appendChild(tb);
 audio_index++;
+
 }
 
 audio.addEventListener("ended", function(){
@@ -145,24 +154,15 @@ is_playing = true;
 document.getElementById(playingtrack).removeAttribute("style");
 document.getElementById(playingtrack).childNodes[0].style.background = "url(soundboardhi/images/ak_playbtn.png)";
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
-
-
-
-if( this.id=="spell_f")
+if(this.id=="spell_f")
 {
-
-for(var i=0;i<res.length; i++)
-
-console.log(file);
-  audio.src = audio_abc+file+audio_ext;
+  audio.src = audio_abc+"merge"+audio_ext;
   audio.play(); 
 
-
 }
-else{
 audio.src = audio_folder+this.id+audio_ext;
 audio.play(); 
-}
+//}
 //Styling Here
 //for(var t in tracks){
 // document.getElementById(t).removeAttribute("style");
@@ -170,10 +170,21 @@ audio.play();
 document.getElementById(this.id).style.backgroundColor = "green";
 // }
 //}
-} else {
+}
+else if(playingtrack != this.id)
+{
+  is_playing = true;
+  if(this.id=="spell_f")
+{
+  audio.src = audio_abc+file+audio_ext;
+  audio.play(); 
+
+}
+  
+}
+else {
 audio.pause();
 audio.currentTime = 0;
-is_playing = false;
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_playbtn.png)";
 
 //Styling Here
@@ -190,19 +201,15 @@ is_playing = true;
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
 if(playingtrack != this.id){
 
-  if( this.id=="spell_f")
-{
+  if(this.id=="spell_f")
+  {
+    audio.src = audio_abc+file+audio_ext;
+    audio.play(); 
   
+  }
+  else{
+audio.src = audio_folder+this.id+audio_ext;}
 
-  audio.src = audio_abc+file+audio_ext;
-  audio.play(); 
-  
-  
-}
-else
-{
-audio.src = audio_folder+this.id+audio_ext;
-}
 }
 audio.play();
 
@@ -217,6 +224,7 @@ document.getElementById(this.id).style.backgroundColor = "green";
 }
 playingtrack = this.id;
 }
+
 }
 window.addEventListener("load", audioApp);
 
