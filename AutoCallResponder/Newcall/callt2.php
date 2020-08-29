@@ -21,85 +21,8 @@
   
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "aqeela";
-$arr=array("idd","fname","mi","lname","address1","address2","address3","city","state","province","country","zip","phone","dialcode","altphone","show","credit","email","comment");
-$arr2=array("idd" , "FirstName" , "MI" , "LastName", "Address" , "City" , "State" ,"Province", "County" , "Zip" ,"CraditRating" ,"Phone" ,"DialCode","Altphone","Show_",  "Email","Comments");
-session_start();
-// Create connection
-$con = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} {
+  include('get_det.php');  
 
-$send=array();
-
-if(isset($_POST['option']) && ($_POST['text'])!=null  )
-{
-
-  $que="Select Count(*) as data from form where ".$_POST['option']." =  '".$_POST['text']."'";
-  
-  $run=mysqli_query($con,$que);
-  $data=mysqli_fetch_assoc($run);
-  if($data['data']==0)
-  {
-    echo "<script>
-    $(document).ready(function(){
-    $('#error').addClass('alert alert-danger text-center').text('No Results Found').fadeOut(5000);
-    });
-    </script>";
-    $que="Select * from form";
-    $run=mysqli_query($con,$que);
-  }
-  else
-  {
-    echo "<script>
-    $(document).ready(function(){
-    $('#error').addClass('alert alert-success text-center').text('Searching Completed').fadeOut(5000);
-    });
-    </script>";
-    $que="Select * from form where ".$_POST['option']." =  '".$_POST['text']."'";
-    $run=mysqli_query($con,$que);
-  }
-}
-else{
-
-  $que="Select * from form";
-  $run=mysqli_query($con,$que);
-}
-if($run)
-{
-  while($data= mysqli_fetch_assoc($run))
-  {
-      array_push($send,$data);
-  }
-  }
- 
-
-}
-
- 
-
-$i=0;
-
-$_SESSION['id']=0;
-
-  if(isset($_GET['id']))
-{
-    $_SESSION['id']=$_GET['id'];
-    $i=$_SESSION['id']-1;
-   if($_SESSION['id']>count($send)-1)
-    {
-      $_SESSION['id']=0;
-    }
-  //  echo "<script>window.location.replace('test1.php');</script>";
-    
-}
-
-       
  ?>
 
       <br>
@@ -191,7 +114,7 @@ $_SESSION['id']=0;
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">FirstName</label>
     <div class="col-sm-2">
-      <input  class="form-control" id="fname" value="<?php echo $send[$i][$arr2[1]]; ?>" >
+      <input  class="form-control" id="fname" value="<?php $fname=$send[$i][$arr2[1]]; echo $send[$i][$arr2[1]]; ?>" >
     </div>
 
     <label for="colFormLabel" class="col-sm-1 col-form-label" >MI</label>
@@ -353,13 +276,15 @@ $_SESSION['id']=0;
         <br>
         <br>
            <div>
-            
-           <script src="call2.js"></script>
+           <?php
+
+            include('merge_aud.php');  
+
+            ?>        
  
        <script src="js/bootstrap.min.js"></script>
        
        <script>
- 
  $(document).ready(function(){
  $('#AddButton').click( function() {
      

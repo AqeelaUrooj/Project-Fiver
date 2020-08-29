@@ -59,12 +59,16 @@
 	</div>
 	<script src="Newcall\js\jquery.js" ></script>
 	<script src="Newcall/call2.js"></script>
+<script>
+
+var file=<?php session_start(); echo json_encode($_SESSION['file']); ?>;
+
+</script>
 	<script src="indexjs.js"></script>
 
 		</div>
 		<?php
 		 include('hello.html');
-		 
 $servername = "localhost";
 $username = "root";
 $password = "";

@@ -152,11 +152,11 @@ if( this.id=="spell_f")
 {
 
 for(var i=0;i<res.length; i++)
-{
- // console.log(audio_abc+res[i]+audio_ext);
-  audio.src = audio_abc+res[i]+audio_ext;
+
+console.log(file);
+  audio.src = audio_abc+file+audio_ext;
   audio.play(); 
-}
+
 
 }
 else{
@@ -192,16 +192,13 @@ if(playingtrack != this.id){
 
   if( this.id=="spell_f")
 {
-var res= ["H", "O", "W", "A", "R", "D"];
-var i=0
-while(i<res.length)
-{
-  console.log(audio_abc+res[i]+audio_ext);
-  audio.src = audio_abc+res[i]+audio_ext;
+  
+
+  audio.src = audio_abc+file+audio_ext;
   audio.play(); 
-  audio.pause();
-  i++;
-}}
+  
+  
+}
 else
 {
 audio.src = audio_folder+this.id+audio_ext;
