@@ -96,6 +96,8 @@ $password = "";
 $dbname = "aqeela";
 $arr=array("idd","fname","mi","lname","address1","address2","address3","city","state","province","country","zip","phone","dialcode","altphone","show","credit","email","comment");
 $arr2=array("idd" , "FirstName" , "MI" , "LastName", "Address" , "City" , "State" ,"Province", "County" , "Zip" ,"CraditRating" ,"Phone" ,"DialCode","Altphone","Show_",  "Email","Comments");
+$fname='';
+$i=0;
 session_start();
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -115,6 +117,7 @@ if(isset($_POST['option']) && ($_POST['text'])!=null  )
   $data=mysqli_fetch_assoc($run);
   if($data['data']==0)
   {
+    $check=false;
     echo "<script>
     $(document).ready(function(){
     $('#error').addClass('alert alert-danger text-center').text('No Results Found').fadeOut(5000);
@@ -125,9 +128,11 @@ if(isset($_POST['option']) && ($_POST['text'])!=null  )
   }
   else
   {
+    $check=true;
     echo "<script>
     $(document).ready(function(){
     $('#error').addClass('alert alert-success text-center').text('Searching Completed').fadeOut(5000);
+
     });
     </script>";
     $que="Select * from form where ".$_POST['option']." =  '".$_POST['text']."'";
@@ -135,14 +140,14 @@ if(isset($_POST['option']) && ($_POST['text'])!=null  )
   }
 }
 else{
-
+    $check=false;
   $que="Select * from form";
   $run=mysqli_query($con,$que);
 }
 if($run)
 {
   while($data= mysqli_fetch_assoc($run))
-  {
+  {  
       array_push($send,$data);
   }
   }
@@ -151,17 +156,7 @@ if($run)
 }
 
 
-
-
-
-
-
-
- 
-$fname='';
-$i=0;
-
-$_SESSION['id']=0;
+$_SESSION['id']=1;
 
   if(isset($_GET['id']))
 {
@@ -171,14 +166,25 @@ $_SESSION['id']=0;
         unlink($file); // delete file
         }
     $_SESSION['id']=$_GET['id'];
-    $i=$_SESSION['id'];
+    if($check==true)
+    {
+        $i=0;
+    }
+    else
+    {
+    $i=$_SESSION['id']-1;
+    }
    if($_SESSION['id']>count($send)-1)
     {
       $_SESSION['id']=0;
     }
   //  echo "<script>window.location.replace('test1.php');</script>";
     
+
 }
+
+$_SESSION['per_id']=$send[$i][$arr2[0]];
+
 //-------------------------------------------------------------------------------------------------
 
 ?>

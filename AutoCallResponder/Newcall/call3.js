@@ -26,7 +26,15 @@ $(function(){
         
     
       });
-      
+    
+      $('#speakd').click(function(){
+     
+        audio_v.pause();
+        audio_v.src = '..\\soundboardhi\\tracks\\output\\date.mp3';
+        audio_v.play();
+        
+    
+      });
       
 
   });

@@ -1,11 +1,12 @@
 <?php
+
 function call_merge( $label , $randm , $folder)
 {
-$res=str_split($label, 1);
-
+      $res=str_split($label, 1);
+   
  // First File: (Google speech)
-$mp3 = new mp3('..\soundboardhi\tracks\\'.$folder.'\\'.$res[0].'.mp3');
-$mp3->striptags();
+   $mp3 = new mp3('..\soundboardhi\tracks\\'.$folder.'\\'.$res[0].'.mp3');
+   $mp3->striptags();
 
  //Second file
  for($i=1 ; $i<count($res) ;$i++)
@@ -15,12 +16,27 @@ $mp3->striptags();
     $second = new mp3('..\soundboardhi\tracks\\'.$folder.'\\'.$res[$i].'.mp3');
     $mp3->mergeBehind($second);
     $mp3->striptags();
-
     $mp3->savefile('..\soundboardhi\tracks\output\\'.$randm.'.mp3'); //Output file (current a blank file)
+
     }
-}
+   }
+
+
 }
 $name=array();
+//for date
+
+$date= gmdate("jS \of,F");
+$res=explode (",", $date); 
+$mp3 = new mp3('..\soundboardhi\tracks\\Dates of the Months\\'.$res[0].'.mp3');
+$mp3->striptags();
+$second = new mp3('..\soundboardhi\tracks\\Months Names of the year\\'.$res[1].'.mp3');
+$mp3->mergeBehind($second);
+$mp3->striptags();
+$mp3->savefile('..\soundboardhi\tracks\output\\date.mp3'); //Output file (current a blank file)
+
+
+
 //for alphabets
 if($valy['fname']!=null && $valy['lname']!=null)
 {
@@ -44,18 +60,9 @@ foreach($valy as $key => $value){
          call_merge($value,$randm,"Numberings");
       }
       
-      array_push($name,$randm,);
+      array_push($name,$randm);
 
   }
-
- 
-   
-      
-      
-  
-
-
-  
 
 
    }

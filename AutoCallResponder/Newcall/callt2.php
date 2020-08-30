@@ -163,7 +163,9 @@ $valy=array();
 
   <div class="form-group row">  <!--Row 4-->
   <div class="col-sm-2">
-</div>
+    <button type="button" name="speakd" id="speakd" class="btn spk form-control" >Spell Date_Month</button>
+
+    </div>
     <label for="colFormLabel" class="col-sm-1 col-form-label">City</label>
     <div class="col-sm-2">
       <input  class="form-control" id="city" value="<?php echo $send[$i][$arr2[5]]; ?>">
@@ -274,21 +276,18 @@ $valy=array();
            <div>
            <?php
             
-            // include('merge_aud.php');  
+            include('merge_aud.php');  
             // print_r($valy);
             // print_r($name);
             
-
             ?>        
  
        <script src="js/bootstrap.min.js"></script>
   
        <script>
-
          var fname=<?php echo json_encode($name[0]); ?>;
         var lname=<?php echo json_encode($name[1]); ?>;
         var zip=<?php echo json_encode($name[2]); ?>;
-
 
        </script>
        <script src="call3.js"></script>
@@ -302,7 +301,7 @@ $valy=array();
  $('#AddButton').click( function() {
      
         
-     counter=<?php  echo json_encode($_SESSION['id']);   ?>;
+     var counter=<?php  echo json_encode($_SESSION['id']);   ?>;
 
          // $('#TextBox').val(counter++);
          
