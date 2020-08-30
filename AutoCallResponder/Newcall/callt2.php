@@ -41,14 +41,14 @@ $valy=array();
       <br>
       <div id="error" style="position:absolute; left:11%;   z-index:10; width:40%;">
           </div>
-    <div class="container-fluid" style="height:100%; background-color:white; padding:1% ">
+    <div class="container-fluid" style="height:100%; background-color:#DCDDDD; padding:1% ">
         
     <div class="row"> <!--Row 0-->
             <div class="col">
             
             <!-- <input type="file" id="fileUpload" />
             <input type="button" id="upload" class="btn btn-primary" value="Upload" onclick="Upload()" >
-            </div> --><?php $_SESSION['per_id']=$send[$i][$arr2[0]]; ?>
+            </div> -->
             <!-- <a href="#" add target="_blank" id="s_call" class="btn btn-primary text-white"  >Start Call</a> -->
       
           </div>
@@ -274,9 +274,9 @@ $valy=array();
            <div>
            <?php
             
-            include('merge_aud.php');  
-            print_r($valy);
-            print_r($name);
+            // include('merge_aud.php');  
+            // print_r($valy);
+            // print_r($name);
             
 
             ?>        

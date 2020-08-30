@@ -100,7 +100,7 @@ if ($result->num_rows > 0) {
     $btn2 = $row['btn2'];
     $btn3 = $row['btn3'];
     $node_id = $row['node_id'];
-    echo "parent_of.push('$parent_of'); node_id.push('$node_id');btn3.push('$btn3');timeout_time.push('$timeout_time');timeout_btn.push('$timeout_btn');txt.push('$txt');btn1.push('$btn1');btn2.push('$btn2');\n";
+   // echo "parent_of.push('$parent_of'); node_id.push('$node_id');btn3.push('$btn3');timeout_time.push('$timeout_time');timeout_btn.push('$timeout_btn');txt.push('$txt');btn1.push('$btn1');btn2.push('$btn2');\n";
   }
 }
 

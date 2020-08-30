@@ -381,6 +381,30 @@ function addrow(parent_of, txt, btn1,btn2,btn3, timeout_btn, timeout_time, i, ar
     option.text = 'Transfer Call';
     elemtxt.appendChild(option);
 
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1004';
+    option.text = 'Pre-Rec First Name';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1005';
+    option.text = 'Pre-Rec Last Name';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1006';
+    option.text = 'Pre-Rec Zip Code';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1007';
+    option.text = 'Pre-Rec Date';
+    elemtxt.appendChild(option);
+
     for (var ii = 0; ii < buttonslength; ii++) {
         var option = document.createElement('option');
         option.value = ii;
@@ -445,6 +469,30 @@ function addrow(parent_of, txt, btn1,btn2,btn3, timeout_btn, timeout_time, i, ar
     var option = document.createElement('option');
     option.value = 1003;
     option.text = 'Transfer Call';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1004';
+    option.text = 'Pre-Rec First Name';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1005';
+    option.text = 'Pre-Rec Last Name';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1006';
+    option.text = 'Pre-Rec Zip Code';
+    elemtxt.appendChild(option);
+
+    elemtxt.appendChild(option);
+    var option = document.createElement('option');
+    option.value = '1007';
+    option.text = 'Pre-Rec Date';
     elemtxt.appendChild(option);
 
     for (var ii = 0; ii < buttonslength; ii++) {
