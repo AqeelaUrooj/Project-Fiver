@@ -12,7 +12,18 @@
     
     
     <title>Customer Data</title>
+<style>
 
+.spk{
+  color:white;
+  background:#03A46B;
+}
+.spk:focus{
+  color:white;
+  background:#EA6E63;
+}
+
+  </style>
 
   </head>
   <body style="background-color:#77C4F3;">
@@ -22,7 +33,7 @@
 
   include('get_det.php');  
  
-
+$valy=array();
 
  ?>
 
@@ -40,23 +51,6 @@
             </div> --><?php $_SESSION['per_id']=$send[$i][$arr2[0]]; ?>
             <!-- <a href="#" add target="_blank" id="s_call" class="btn btn-primary text-white"  >Start Call</a> -->
       
-    
-    
-   
-    <button type="button" name="speakf" id="speakf"  onclick="play()" class="btn btn-primary" >Spell First Name</button>
-    
-    <br>
-    <br>
-    
-    <button type="button" name="speakl" id="speakl" class="btn btn-primary" >Spell Last Name</button>
-
-<br>
-<br>
-    <button type="button" name="speakz" id="speakz" class="btn btn-primary" >Spell Zip Code</button>
-
-
-
-  
           </div>
           
 
@@ -100,9 +94,13 @@
 <br>
 
   <div class="form-group row">  <!--Row 1-->
-    <label for="colFormLabel" class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
       
+    <button type="button" name="speakf" id="speakf"  class="btn btn-default spk form-control" >Spell First Name</button>
+    
+   
+    
+   
     </div>
 
 
@@ -113,7 +111,7 @@
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">FirstName</label>
     <div class="col-sm-2">
-      <input  class="form-control" id="fname" value="<?php $fname=$send[$i][$arr2[1]]; echo $send[$i][$arr2[1]]; ?>" >
+      <input  class="form-control" id="fname" value="<?php $valy['fname']=$send[$i][$arr2[1]]; echo $send[$i][$arr2[1]]; ?>" >
     </div>
 
     <label for="colFormLabel" class="col-sm-1 col-form-label" >MI</label>
@@ -123,14 +121,16 @@
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">LastName</label>
     <div class="col-sm-2">
-      <input  class="form-control" id="lname" value="<?php echo $send[$i][$arr2[3]]; ?>">
+      <input  class="form-control" id="lname" value="<?php $valy['lname']=$send[$i][$arr2[3]]; echo $send[$i][$arr2[3]]; ?>">
     </div>
   </div>                        <!--Closed-->
 
   <div class="form-group row">  <!--Row 2-->
-    <label for="colFormLabel" class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-1">
-      
+    <div class="col-sm-2">
+       
+    <button type="button" name="speakl" id="speakl" class="btn spk form-control" >Spell Last Name</button>
+
+    
     </div>
 
 
@@ -143,10 +143,11 @@
   </div>                        <!--Closed-->
 
   <div class="form-group row">  <!--Row 3-->
-    <label for="colFormLabel" class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-1">
-      
+  <div class="col-sm-2">
+    <button type="button" name="speakz" id="speakz" class="btn spk form-control" >Spell Zip Code</button>
+
     </div>
+
 
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">Address=2</label>
@@ -161,12 +162,8 @@
   </div>                        <!--Closed-->
 
   <div class="form-group row">  <!--Row 4-->
-    <label for="colFormLabel" class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-1">
-      
-    </div>
-
-
+  <div class="col-sm-2">
+</div>
     <label for="colFormLabel" class="col-sm-1 col-form-label">City</label>
     <div class="col-sm-2">
       <input  class="form-control" id="city" value="<?php echo $send[$i][$arr2[5]]; ?>">
@@ -197,7 +194,7 @@
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">Zip</label>
     <div class="col-sm-2">
-      <input  class="form-control" id="zip" value="<?php echo $send[$i][$arr2[9]]; ?>">
+      <input  class="form-control" id="zip" value="<?php  echo $send[$i][$arr2[9]]; ?>">
     </div>
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">CreditRating</label>
@@ -276,8 +273,11 @@
         <br>
            <div>
            <?php
-
+            
             include('merge_aud.php');  
+            print_r($valy);
+            print_r($name);
+            
 
             ?>        
  
@@ -285,7 +285,7 @@
   
        <script>
 
-         var name=<?php echo json_encode($name); ?>;
+        // var name=<?php //echo json_encode($name); ?>;
        </script>
        <script src="call3.js"></script>
 
