@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" >
     <!-- <script src="call.js"></script> -->
     <script src="js/jquery.js"></script>
-    <script src="call.js"></script>
     
     
     <title>Customer Data</title>
@@ -43,20 +42,18 @@
       
     
     
-      <!-- <div>
-        <input type="hidden" id="message" value="his" />
-      </div>
    
-    <button type="button" name="speakf" id="speakf" class="btn btn-primary" >Spell First Name</button>
+    <button type="button" name="speakf" id="speakf"  onclick="play()" class="btn btn-primary" >Spell First Name</button>
     
+    <br>
     <br>
     
     <button type="button" name="speakl" id="speakl" class="btn btn-primary" >Spell Last Name</button>
 
 <br>
-
+<br>
     <button type="button" name="speakz" id="speakz" class="btn btn-primary" >Spell Zip Code</button>
- -->
+
 
 
   
@@ -285,9 +282,19 @@
             ?>        
  
        <script src="js/bootstrap.min.js"></script>
-       
+  
+       <script>
+
+         var name=<?php echo json_encode($name); ?>;
+       </script>
+       <script src="call3.js"></script>
+
+
+
        <script>
  $(document).ready(function(){
+
+  
  $('#AddButton').click( function() {
      
      counter=<?php  echo json_encode($_SESSION['id']);   ?>;
@@ -299,17 +306,8 @@
          
         
  });
-var name=<?php echo json_encode($_SESSION['file']); ?>;
-    $.ajax({
-        url: '../index.php',
-        type: 'POST',
-        data: {
-            file: name,
-        },
-        success: function(msg) {
-            alert('Email Sent');
-        }               
-    });
+  
+
 
  });
 </script>

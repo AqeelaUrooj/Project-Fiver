@@ -72,16 +72,9 @@
 // if(document.getElementById('vicidial_iframe').contentWindow) {
 //  ifdoc = document.getElementById('vicidial_iframe').contentWindow.document;
 // } else {
-//  ifdoc = document.getElementById('vicidial_iframe').contentDocument;
-// }
+	const  frame=document.getElementById('vicidial_iframe').contentWindow;
 
-// var name= $('#fname').val();
-name=document.getElementById('vicidial_iframe');
- 
-  name=window.frames['vicidial_iframe'].document.getElementId('fname').value;
- 
-
-console.log(name);
+console.log(frame.document);
 </script>
 	<script src="Newcall\js\jquery.js" ></script>
 	<script src="indexjs.js"></script>

@@ -107,15 +107,13 @@ var tracks = {
 for(var track in tracks){
 var tb = document.createElement("div");
 var tn = document.createElement("div");
+var pb = document.createElement("button");
+
 if(tracks[track][1]=="spell_f")
 {
-  var pb = document.createElement("button");
-  pb.id="spellf";
+  pb.id="spell_f";
 }
-else
-{
-  var pb = document.createElement("button");
-}
+
 tb.className = "trackbox ";
 tb.setAttribute("index",audio_index-1);
 pb.className = "playbutton";
@@ -162,7 +160,7 @@ if(this.id=="spell_f")
 }
 audio.src = audio_folder+this.id+audio_ext;
 audio.play(); 
-//}
+
 //Styling Here
 //for(var t in tracks){
 // document.getElementById(t).removeAttribute("style");
@@ -203,8 +201,9 @@ if(playingtrack != this.id){
 
   if(this.id=="spell_f")
   {
-    audio.src = audio_abc+file+audio_ext;
-    audio.play(); 
+    audio_v=new Audio();
+    audio_v.src = audio_abc+"merge"+audio_ext;
+    audio_v.play(); 
   
   }
   else{
