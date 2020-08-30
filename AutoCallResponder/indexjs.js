@@ -87,7 +87,6 @@ var tracks = {
 
 "track38":["Real Person", "I am a real person"],
 
-"track53":["Spell First name", "spell_f"],
 
 
 "track43":["--------", "Let me ask"],
@@ -108,12 +107,6 @@ for(var track in tracks){
 var tb = document.createElement("div");
 var tn = document.createElement("div");
 var pb = document.createElement("button");
-
-if(tracks[track][1]=="spell_f")
-{
-  pb.id="spell_f";
-}
-
 tb.className = "trackbox ";
 tb.setAttribute("index",audio_index-1);
 pb.className = "playbutton";
@@ -152,12 +145,7 @@ is_playing = true;
 document.getElementById(playingtrack).removeAttribute("style");
 document.getElementById(playingtrack).childNodes[0].style.background = "url(soundboardhi/images/ak_playbtn.png)";
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
-if(this.id=="spell_f")
-{
-  audio.src = audio_abc+"merge"+audio_ext;
-  audio.play(); 
 
-}
 audio.src = audio_folder+this.id+audio_ext;
 audio.play(); 
 
@@ -172,12 +160,11 @@ document.getElementById(this.id).style.backgroundColor = "green";
 else if(playingtrack != this.id)
 {
   is_playing = true;
-  if(this.id=="spell_f")
-{
+
   audio.src = audio_abc+file+audio_ext;
   audio.play(); 
 
-}
+
   
 }
 else {
@@ -199,15 +186,7 @@ is_playing = true;
 document.getElementById(this.id).childNodes[0].style.background = "url(soundboardhi/images/ak_pausebtn.png)";
 if(playingtrack != this.id){
 
-  if(this.id=="spell_f")
-  {
-    audio_v=new Audio();
-    audio_v.src = audio_abc+"merge"+audio_ext;
-    audio_v.play(); 
-  
-  }
-  else{
-audio.src = audio_folder+this.id+audio_ext;}
+audio.src = audio_folder+this.id+audio_ext;
 
 }
 audio.play();

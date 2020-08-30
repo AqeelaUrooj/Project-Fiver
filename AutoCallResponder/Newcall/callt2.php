@@ -194,7 +194,7 @@ $valy=array();
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">Zip</label>
     <div class="col-sm-2">
-      <input  class="form-control" id="zip" value="<?php  echo $send[$i][$arr2[9]]; ?>">
+      <input  class="form-control" id="zip" value="<?php $valy['zip']=$send[$i][$arr2[9]]; echo $send[$i][$arr2[9]]; ?>">
     </div>
 
     <label for="colFormLabel" class="col-sm-1 col-form-label">CreditRating</label>
@@ -287,8 +287,8 @@ $valy=array();
 
          var fname=<?php echo json_encode($name[0]); ?>;
         var lname=<?php echo json_encode($name[1]); ?>;
-        var playing=true;
-        console.log(fname+" "+lname);
+        var zip=<?php echo json_encode($name[2]); ?>;
+
 
        </script>
        <script src="call3.js"></script>

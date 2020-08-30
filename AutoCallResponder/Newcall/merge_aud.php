@@ -4,7 +4,7 @@ function call_merge( $label , $randm , $folder)
 $res=str_split($label, 1);
 
  // First File: (Google speech)
-$mp3 = new mp3('..\soundboardhi\tracks\ABC-Alphabets\\'.$res[0].'.mp3');
+$mp3 = new mp3('..\soundboardhi\tracks\\'.$folder.'\\'.$res[0].'.mp3');
 $mp3->striptags();
 
  //Second file
@@ -20,29 +20,44 @@ $mp3->striptags();
     }
 }
 }
-
-
+$name=array();
+//for alphabets
 if($valy['fname']!=null && $valy['lname']!=null)
 {
- $name=array();  
+   
 foreach($valy as $key => $value){
       if($key=="fname")
       {
          $randm="fname".rand();
+         call_merge($value,$randm,"ABC-Alphabets");
 
       }
       elseif($key=="lname")
       {
          $randm="lname".rand();
+         call_merge($value,$randm,"ABC-Alphabets");
 
       }
-      call_merge($value,$randm,"ABC-Alphabets");
+      elseif($key=="zip")
+      {
+         $randm="zip".rand();
+         call_merge($value,$randm,"Numberings");
+      }
+      
       array_push($name,$randm,);
 
   }
 
+ 
+   
+      
+      
+  
 
 
-}
+  
+
+
+   }
 
 ?>

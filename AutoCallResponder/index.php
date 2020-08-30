@@ -60,21 +60,11 @@
 			</h4>
 		</footer>
 	</div>
-	<?php
-		echo $_POST['file'];
-		?>
-
+	
 
 	<script>
 
-//var file= <?php //session_start(); echo json_encode($_SESSION['file']); ?> ;
 
-// if(document.getElementById('vicidial_iframe').contentWindow) {
-//  ifdoc = document.getElementById('vicidial_iframe').contentWindow.document;
-// } else {
-	const  frame=document.getElementById('vicidial_iframe').contentWindow;
-
-console.log(frame.document);
 </script>
 	<script src="Newcall\js\jquery.js" ></script>
 	<script src="indexjs.js"></script>
