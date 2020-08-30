@@ -1,15 +1,35 @@
 $(function(){
   
-    $('#speakf').click(function(){
-     
-        var audio_v=new Audio();
+  var audio_v=new Audio();
 
-        audio_v.src = '..\\soundboardhi\\tracks\\ABC-Alphabets\\'+name+'.mp3';
+    $('#speakf').click(function(){
+        
+        audio_v.pause();
+        audio_v.src = '..\\soundboardhi\\tracks\\output\\'+fname+'.mp3';
         audio_v.play();
+        
+      });
+
+      $('#speakl').click(function(){
+
+        audio_v.pause();
+        audio_v.src = '..\\soundboardhi\\tracks\\output\\'+lname+'.mp3';
+        audio_v.play();
+        
+      });
+
+      $('#speakz').click(function(){
+     
+        audio_v.pause();
+        audio_v.src = '..\\soundboardhi\\tracks\\output\\'+zip+'.mp3';
+        audio_v.play();
+        
     
       });
       
+      
 
   });
+
+      
    
-  

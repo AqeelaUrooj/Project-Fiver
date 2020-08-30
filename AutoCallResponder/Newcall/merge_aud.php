@@ -1,5 +1,5 @@
 <?php
-function call_merge( $label , $randm)
+function call_merge( $label , $randm , $folder)
 {
 $res=str_split($label, 1);
 
@@ -12,7 +12,7 @@ $mp3->striptags();
  {
     if($res[$i]!=" ")
     {
-    $second = new mp3('..\soundboardhi\tracks\ABC-Alphabets\\'.$res[$i].'.mp3');
+    $second = new mp3('..\soundboardhi\tracks\\'.$folder.'\\'.$res[$i].'.mp3');
     $mp3->mergeBehind($second);
     $mp3->striptags();
 
@@ -36,8 +36,8 @@ foreach($valy as $key => $value){
          $randm="lname".rand();
 
       }
-      call_merge($value,$randm);
-      array_push($name,$randm);
+      call_merge($value,$randm,"ABC-Alphabets");
+      array_push($name,$randm,);
 
   }
 

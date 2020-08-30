@@ -285,7 +285,11 @@ $valy=array();
   
        <script>
 
-        // var name=<?php //echo json_encode($name); ?>;
+         var fname=<?php echo json_encode($name[0]); ?>;
+        var lname=<?php echo json_encode($name[1]); ?>;
+        var playing=true;
+        console.log(fname+" "+lname);
+
        </script>
        <script src="call3.js"></script>
 
@@ -297,6 +301,7 @@ $valy=array();
   
  $('#AddButton').click( function() {
      
+        
      counter=<?php  echo json_encode($_SESSION['id']);   ?>;
 
          // $('#TextBox').val(counter++);

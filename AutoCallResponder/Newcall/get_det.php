@@ -165,8 +165,13 @@ $_SESSION['id']=0;
 
   if(isset($_GET['id']))
 {
+    $files = glob('..\soundboardhi\tracks\output\*'); // get all file names
+    foreach($files as $file){ // iterate files
+         if(is_file($file))
+        unlink($file); // delete file
+        }
     $_SESSION['id']=$_GET['id'];
-    $i=$_SESSION['id']-1;
+    $i=$_SESSION['id'];
    if($_SESSION['id']>count($send)-1)
     {
       $_SESSION['id']=0;
